@@ -114,14 +114,14 @@ class CRM_Pcadets_Form_Settings extends CRM_Core_Form {
     $this->assign('elementNames', $this->getRenderableElementNames());
 
     $session = CRM_Core_Session::singleton();
-    $session->pushUserContext(CRM_Utils_System::url('civicrm/admin/powerthecadets', 'reset=1', TRUE));
+    $session->pushUserContext(CRM_Utils_System::url('civicrm/admin/powerthecadets/settings', 'reset=1', TRUE));
     parent::buildQuickForm();
   }
 
   public function postProcess() {
     $this->_submittedValues = $this->exportValues();
     $this->saveSettings();
-    CRM_Utils_System::redirect(CRM_Utils_System::url('civicrm/admin/powerthecadets', 'reset=1'));
+    CRM_Utils_System::redirect(CRM_Utils_System::url('civicrm/admin/powerthecadets/settings', 'reset=1'));
     parent::postProcess();
   }
 

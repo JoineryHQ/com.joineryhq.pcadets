@@ -162,8 +162,8 @@ function pcadets_civicrm_themes(&$themes) {
 function pcadets_civicrm_navigationMenu(&$menu) {
   $pages = array(
     'settings_page' => array(
-      'label' => E::ts('Power the Cadets'),
-      'name' => 'Power the Cadets',
+      'label' => E::ts('Power The Cadets'),
+      'name' => 'Power The Cadets',
       'url' => 'civicrm/admin/powerthecadets/settings?reset=1',
       'parent' => array('Administer', 'System Settings'),
       'permission' => 'access CiviCRM',

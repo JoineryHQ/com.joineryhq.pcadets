@@ -143,4 +143,17 @@ return array(
     ),
     'X_options_callback' => 'CRM_Pcadets_Form_Settings::getMealCustomFieldsOptions',
   ),
+  'pcadets_maximum_donors_to_show' => array(
+    'group_name' => 'Power The Cadets Settings',
+    'group' => 'pcadets',
+    'name' => 'pcadets_maximum_donors_to_show',
+    'add' => '5.0',
+    'is_domain' => 1,
+    'is_contact' => 0,
+    'description' => E::ts('Integer indicating the maximum number of donor names to reveal for each date upon loading the Listings Page. For dates having more donors than this number, donor names will be hidden behind a "View more" button.'),
+    'title' => E::ts('Maximum donors to reveal on Listings Page'),
+    'type' => 'Int',
+    'quick_form_type' => 'Element',
+    'html_type' => 'Text',
+  ),
 );
