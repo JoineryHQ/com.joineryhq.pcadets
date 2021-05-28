@@ -83,7 +83,7 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
       $powerTheCadetsData[$optionValue['id']]['sponsors_count'] = count($sponsors);
 
       // Add the contribution page url parameter
-      $contributionPageUrlParam = "?reset=1&id={$mealSponsorshipContributionPageId}";
+      $contributionPageUrlParam = "reset=1&id={$mealSponsorshipContributionPageId}&date={$optionValue['value']}";
       // If there is a soft_credit_contact, add it on the contributionPageUrlParam
       if ($optionValue['soft_credit_contact']) {
         // Get the soft_credit_contact contact_id
@@ -101,7 +101,7 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
         }
 
         // Update contribution page url parameter with the softCreditType and softCreditContact
-        $contributionPageUrlParam .= "&htype={$softCreditType}&hcid={$softCreditContact}";
+        $contributionPageUrlParam .= "&sctype={$softCreditType}&sccid={$softCreditContact}";
       }
 
         // Assign contribution page url parameter in the contribution_page_url
@@ -110,6 +110,7 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
 
     // Assign powerTheCadetsData as powerTheCadetsList
     $this->assign('powerTheCadetsList', $powerTheCadetsData);
+    CRM_Core_Resources::singleton()->addScriptFile('com.joineryhq.pcadets', 'js/PowerTheCadets.js', 100, 'page-footer');
 
     parent::run();
   }

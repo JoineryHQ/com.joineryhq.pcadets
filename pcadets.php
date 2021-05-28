@@ -213,3 +213,21 @@ function _pcadets_civicrmapi(string $entity, string $action, array $params, bool
 
   return $result;
 }
+
+/**
+ * Implements hook_civicrm_buildForm().
+ *
+ * @link https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_buildForm/
+ */
+function pcadets_civicrm_buildForm($formName, &$form) {
+  if ($formName == 'CRM_Contribute_Form_Contribution_Main') {
+    $sponsoredDate = CRM_Utils_Request::retrieve('date', 'Integer');
+
+    if ($sponsoredDate) {
+      $sponsoredDateCustomFieldId = Civi::settings()->get('pcadets_custom_field_sponsored_date');
+      $form->getElement("custom_{$sponsoredDateCustomFieldId}")->freeze();
+      $defaults["custom_{$sponsoredDateCustomFieldId}"] = date("Y-m-d", strtotime($sponsoredDate));
+      $form->setDefaults($defaults);
+    }
+  }
+}

@@ -23,7 +23,7 @@
              Each TD has a class "pcadets-listing-item-TYPE".
              Each TD has the common class "pcadets-listing-item".
         -->
-        <td id="pcadets-listing-item-date-{$powerTheCadetsItemKey}" class="pcadets-listing-item pcadets-listing-item-date">{$powerTheCadetsItem.date_label}</td>
+        <td id="pcadets-listing-item-date-{$powerTheCadetsItemKey}" class="pcadets-listing-item pcadets-listing-item-date">{$powerTheCadetsItem.date|date_format:"%B %d"}</td>
         <td id="pcadets-listing-item-city-{$powerTheCadetsItemKey}" class="pcadets-listing-item pcadets-listing-item-city">{$powerTheCadetsItem.city}</td>
         <!-- TDs with class "pcadets-listing-item-mealprogress" will have the attribute data-pcadets-listing-mealprogress-number, which has a value
              inticating the percentage of completion for meals on this date.
@@ -48,16 +48,16 @@
              and cause that <a> element to display the contents of the child <div class="pcadets-listing-donors">.
         -->
         <td id="pcadets-listing-item-donors-{$powerTheCadetsItemKey}" class="pcadets-listing-item pcadets-listing-item-donors" data-pcadets-donorcount="{$powerTheCadetsItem.sponsors_count}">
-          <div id="pcadets-listing-donors-{$powerTheCadetsItemKey}" class="pcadets-listing-donors">
+          <div id="pcadets-listing-donors-{$powerTheCadetsItemKey}" class="pcadets-listing-donors"
+            {if ($powerTheCadetsItem.sponsors_count > $powerTheCadetsItem.sponsors_limit)}
+              style="display:none;"
+            {/if}
+          >
             <!-- Divs with class  "pcadets-listing-donor" represent a single NON-ANONYMOUS donor for this date. (Anonymous donors are never listed).
                  Each div has the unique id "pcadets-listing-donor-N-X", where N is the same as in the row id, and X is a serial integer 1, 2, 3, etc.
             -->
-            {assign var=countSponsor value=1}
             {foreach from=$powerTheCadetsItem.sponsors key=sponsorKey item=sponsor}
-              {if $countSponsor <= $powerTheCadetsItem.sponsors_limit}
                 <div id="pcadets-listing-donor-{$powerTheCadetsItemKey}-{$sponsorKey}" class="pcadets-listing-donor">{$sponsor.name}</div>
-                {assign var=countSponsor value=$countSponsor+1}
-              {/if}
             {/foreach}
           </div>
           <!-- Links with class "pcadets-listing-donors-viewmore" have style="display:none" and are hidden upon page load; JavaScript code may
@@ -65,7 +65,7 @@
           -->
           {if $powerTheCadetsItem.sponsors_count > $powerTheCadetsItem.sponsors_limit}
             <a href="#viewmore" id="pcadets-listing-donors-viewmore-{$powerTheCadetsItemKey}" class="pcadets-listing-donors-viewmore">
-              <span>View donors</span>
+              <span>View Sponsors</span>
             </a>
           {/if}
         </td>
