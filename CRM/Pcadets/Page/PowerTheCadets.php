@@ -75,10 +75,10 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
 
         // If remain_anonymous field is not check, store name and amount in the sponsors
         if (!$remainAnonymous) {
-          $sponsors[$contribution['contact_id']]['name'] = $contribution["custom_{$displayNameCustomFieldId}"] ?? CRM_Contact_BAO_Contact::displayName($contribution['contact_id']);
-          $sponsors[$contribution['contact_id']]['amount'] = $contribution['total_amount'];
+          $sponsors[] = $contribution["custom_{$displayNameCustomFieldId}"] ?? CRM_Contact_BAO_Contact::displayName($contribution['contact_id']);
         }
       }
+      $sponsors = array_unique($sponsors);
 
       // Get the totalContribution percentage base on the total_meal_value_per_day
       $percentage = (int) $totalContribution / $totalMealValuePerDay * 100;

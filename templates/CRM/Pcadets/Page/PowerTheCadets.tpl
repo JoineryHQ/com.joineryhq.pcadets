@@ -56,8 +56,9 @@
             <!-- Divs with class  "pcadets-listing-donor" represent a single NON-ANONYMOUS donor for this date. (Anonymous donors are never listed).
                  Each div has the unique id "pcadets-listing-donor-N-X", where N is the same as in the row id, and X is a serial integer 1, 2, 3, etc.
             -->
-            {foreach from=$powerTheCadetsItem.sponsors key=sponsorKey item=sponsor}
-                <div id="pcadets-listing-donor-{$powerTheCadetsItemKey}-{$sponsorKey}" class="pcadets-listing-donor">{$sponsor.name}</div>
+            {counter start=0 name=sponsorCounter print=false}
+            {foreach from=$powerTheCadetsItem.sponsors item=sponsor}
+                <div id="pcadets-listing-donor-{$powerTheCadetsItemKey}-{counter name=sponsorCounter}" class="pcadets-listing-donor">{$sponsor}</div>
             {/foreach}
           </div>
           <!-- Links with class "pcadets-listing-donors-viewmore" have style="display:none" and are hidden upon page load; JavaScript code may
