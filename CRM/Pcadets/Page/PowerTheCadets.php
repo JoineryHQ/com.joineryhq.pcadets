@@ -14,7 +14,7 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
     $mealSponsorshipContributionPageId = Civi::settings()->get('pcadets_meal_sponsorship_contribution_page_id');
     $sponsoredDateCustomFieldId = Civi::settings()->get('pcadets_custom_field_sponsored_date');
     $remainAnonymousCustomFieldId = Civi::settings()->get('pcadets_custom_field_remain_anonymous');
-    $remainAnonymousInvertCustomFieldId = Civi::settings()->get('pcadets_custom_field_remain_anonymous_invert');
+    $remainAnonymousInvert = Civi::settings()->get('pcadets_remain_anonymous_invert');
     $displayNameCustomFieldId = Civi::settings()->get('pcadets_custom_field_display_name');
     $messageCustomFieldId = Civi::settings()->get('pcadets_custom_field_message');
     $maximumDonorToShow = Civi::settings()->get('pcadets_maximum_donors_to_show');
@@ -49,7 +49,6 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
         'return' => [
           "custom_{$sponsoredDateCustomFieldId}",
           "custom_{$remainAnonymousCustomFieldId}",
-          "custom_{$remainAnonymousInvertCustomFieldId}",
           "custom_{$displayNameCustomFieldId}",
           "custom_{$messageCustomFieldId}",
           "contact_id",
@@ -70,7 +69,7 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
 
         $remainAnonymous = $contribution["custom_{$remainAnonymousCustomFieldId}"];
 
-        if ($contribution["custom_{$remainAnonymousInvertCustomFieldId}"]) {
+        if ($remainAnonymousInvert) {
           $remainAnonymous = !$remainAnonymous;
         }
 
