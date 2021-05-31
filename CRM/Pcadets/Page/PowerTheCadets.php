@@ -22,6 +22,17 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
     // Set variables for the data that we will pass in the .tpl file
     $powerTheCadetsData = [];
 
+    $softCreditTypeHonor = \Civi\Api4\OptionValue::get()
+      ->addWhere('option_group_id:name', '=', 'soft_credit_type')
+      ->addWhere('value', '=', 1)
+      ->execute()
+      ->first();
+    $softCreditTypeMemory = \Civi\Api4\OptionValue::get()
+      ->addWhere('option_group_id:name', '=', 'soft_credit_type')
+      ->addWhere('value', '=', 2)
+      ->execute()
+      ->first();
+
     // Get the optionvValues of the available_date and chain the..
     // soft_credit_contacts base on label and the available date value
     $optionValues = \Civi\Api4\OptionValue::get()
@@ -94,21 +105,21 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
       // If there is a soft_credit_contact, add it on the contributionPageUrlParam
       if ($optionValue['soft_credit_contact']) {
         // Get the soft_credit_contact contact_id
-        $softCreditContact = $optionValue['soft_credit_contact'][0]['value'];
+        $softCreditContactId = $optionValue['soft_credit_contact'][0]['value'];
         // Get the contact id details
-        list($name, $email, $doNotEmail, $onHold, $isDeceased) = CRM_Contact_BAO_Contact::getContactDetails($softCreditContact);
+        list($scContactDisplayName, $scContactEmail, $scContactDoNotEmail, $scContactOnHold, $scContactIsDeceased) = CRM_Contact_BAO_Contact::getContactDetails($softCreditContactId);
 
-        // Store softCreditType and soft_credit_info
-        $softCreditTypeId = 1;
-        $powerTheCadetsData[$optionValue['id']]['soft_credit_info'] = "In Honor of {$name}";
-        // If deceased, update softCreditType and soft_credit_info
-        if ($isDeceased) {
-          $powerTheCadetsData[$optionValue['id']]['soft_credit_info'] = "In Memory of {$name}";
-          $softCreditTypeId = 2;
+        // Specify softCreditType based on contact.is_deceased
+        $softCreditType = $softCreditTypeHonor;
+        // If deceased, update softCreditType and soft_credit_description
+        if ($scContactIsDeceased) {
+          $softCreditType = $softCreditTypeMemory;
         }
+        // Specify user-visible description for soft-credit
+        $powerTheCadetsData[$optionValue['id']]['soft_credit_description'] = "{$softCreditType['label']} {$scContactDisplayName}";
 
         // Update contribution page url parameter with the softCreditType and softCreditContact
-        $contributionPageUrlParam .= "&sctype={$softCreditTypeId}&sccid={$softCreditContact}";
+        $contributionPageUrlParam .= "&sctype={$softCreditType['value']}&sccid={$softCreditContactId}";
       }
 
         // Assign contribution page url parameter in the contribution_page_url

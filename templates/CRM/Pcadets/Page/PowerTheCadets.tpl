@@ -89,8 +89,8 @@
             <div>We are pleased to tell you that the goal for this date has been achieved.</div>
           {/if}
 
-          {if $powerTheCadetsItem.soft_credit_info}
-            <div id="pcadets-listing-honoreeinfo-{$powerTheCadetsItemKey}" class="pcadets-listing-honoreeinfo">{$powerTheCadetsItem.soft_credit_info}</div>
+          {if $powerTheCadetsItem.soft_credit_description}
+            <div id="pcadets-listing-honoreeinfo-{$powerTheCadetsItemKey}" class="pcadets-listing-honoreeinfo">{$powerTheCadetsItem.soft_credit_description}</div>
           {/if}
         </td>
       </tr>
