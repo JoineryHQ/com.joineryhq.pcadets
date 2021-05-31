@@ -65,7 +65,7 @@
                hide these links based on logic related to the attribute data-pcadets-donorcount (see comments on parent <td class="pcadets-listing-item-donors">).
           -->
           {if $powerTheCadetsItem.sponsors_count > $powerTheCadetsItem.sponsors_limit}
-            <a href="#viewmore" id="pcadets-listing-donors-viewmore-{$powerTheCadetsItemKey}" class="pcadets-listing-donors-viewmore">
+            <a href="#viewmore" id="pcadets-listing-donors-viewmore-{$powerTheCadetsItemKey}" class="pcadets-listing-donors-viewmore button">
               <span>View Sponsors</span>
             </a>
           {/if}
