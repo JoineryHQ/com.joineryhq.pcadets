@@ -75,7 +75,7 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
 
         // If remain_anonymous field is not check, store name and amount in the sponsors
         if (!$remainAnonymous) {
-          $sponsors[] = $contribution["custom_{$displayNameCustomFieldId}"] ?? CRM_Contact_BAO_Contact::displayName($contribution['contact_id']);
+        $sponsors[] = (!empty($contribution["custom_{$displayNameCustomFieldId}"]) ? $contribution["custom_{$displayNameCustomFieldId}"] : CRM_Contact_BAO_Contact::displayName($contribution['contact_id']));
         }
       }
       $sponsors = array_unique($sponsors);
