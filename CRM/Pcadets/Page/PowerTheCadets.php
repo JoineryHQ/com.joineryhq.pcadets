@@ -99,16 +99,16 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
         list($name, $email, $doNotEmail, $onHold, $isDeceased) = CRM_Contact_BAO_Contact::getContactDetails($softCreditContact);
 
         // Store softCreditType and soft_credit_info
-        $softCreditType = 1;
+        $softCreditTypeId = 1;
         $powerTheCadetsData[$optionValue['id']]['soft_credit_info'] = "In Honor of {$name}";
         // If deceased, update softCreditType and soft_credit_info
         if ($isDeceased) {
           $powerTheCadetsData[$optionValue['id']]['soft_credit_info'] = "In Memory of {$name}";
-          $softCreditType = 2;
+          $softCreditTypeId = 2;
         }
 
         // Update contribution page url parameter with the softCreditType and softCreditContact
-        $contributionPageUrlParam .= "&sctype={$softCreditType}&sccid={$softCreditContact}";
+        $contributionPageUrlParam .= "&sctype={$softCreditTypeId}&sccid={$softCreditContact}";
       }
 
         // Assign contribution page url parameter in the contribution_page_url
