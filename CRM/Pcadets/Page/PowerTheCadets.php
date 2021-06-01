@@ -23,11 +23,13 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
     $powerTheCadetsData = [];
 
     $softCreditTypeHonor = \Civi\Api4\OptionValue::get()
+      ->setCheckPermissions(FALSE)
       ->addWhere('option_group_id:name', '=', 'soft_credit_type')
       ->addWhere('value', '=', 1)
       ->execute()
       ->first();
     $softCreditTypeMemory = \Civi\Api4\OptionValue::get()
+      ->setCheckPermissions(FALSE)
       ->addWhere('option_group_id:name', '=', 'soft_credit_type')
       ->addWhere('value', '=', 2)
       ->execute()
