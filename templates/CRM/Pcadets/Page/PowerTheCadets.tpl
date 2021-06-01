@@ -28,19 +28,19 @@
         <!-- TDs with class "pcadets-listing-item-mealprogress" will have the attribute data-pcadets-listing-mealprogress-number, which has a value
              inticating the percentage of completion for meals on this date.
         -->
-        <td id="pcadets-listing-item-mealprogress-{$powerTheCadetsItemKey}" class="pcadets-listing-item pcadets-listing-item-mealprogress" data-pcadets-listing-mealprogress-number="{$powerTheCadetsItem.percentage}">
+        <td id="pcadets-listing-item-mealprogress-{$powerTheCadetsItemKey}" class="pcadets-listing-item pcadets-listing-item-mealprogress pcadets-listing-item-mealprogress-progressstage-{$powerTheCadetsItem.progress_stage}" data-pcadets-listing-mealprogress-number="{$powerTheCadetsItem.percentage}">
           <!-- TDs with class "pcadets-listing-item-mealprogress" contain a nested div structure stylable as a progress indicator.
           -->
-          <div id="pcadets-listing-mealprogress-indicator-{$powerTheCadetsItemKey}" class="pcadets-listing-mealprogress-indicator">
+          <div id="pcadets-listing-mealprogress-indicator-{$powerTheCadetsItemKey}" class="pcadets-listing-mealprogress-indicator pcadets-listing-mealprogress-indicator-progressstage-{$powerTheCadetsItem.progress_stage}">
             <!-- Divs with class "pcadets-listing-mealprogress-completed" will have a "style" attribute setting the width to the appropriate
                  percentage, same as in the data-pcadets-listing-mealprogress-number attribute of the parent <td class="pcadets-listing-item-mealprogress">
             -->
-            <div id="pcadets-listing-mealprogress-completed-{$powerTheCadetsItemKey}" class="pcadets-listing-mealprogress-completed" style="width: {$powerTheCadetsItem.percentage}%;"></div>
+            <div id="pcadets-listing-mealprogress-completed-{$powerTheCadetsItemKey}" class="pcadets-listing-mealprogress-completed pcadets-listing-mealprogress-completed-progressstage-{$powerTheCadetsItem.progress_stage}" style="width: {$powerTheCadetsItem.percentage}%;"></div>
           </div>
           <!-- Divs with class "pcadets-listing-mealprogress-number" are expected to be displayed to the user as a numeric indication of the completed
                percentage, same as in the data-pcadets-listing-mealprogress-number attribute of the parent <td class="pcadets-listing-item-mealprogress">
           -->
-          <div id="pcadets-listing-mealprogress-number-{$powerTheCadetsItemKey}" class="pcadets-listing-mealprogress-number">{$powerTheCadetsItem.percentage}%</div>
+          <div id="pcadets-listing-mealprogress-number-{$powerTheCadetsItemKey}" class="pcadets-listing-mealprogress-number pcadets-listing-mealprogress-number-progressstage-{$powerTheCadetsItem.progress_stage}">{$powerTheCadetsItem.percentage}%</div>
         </td>
         <!-- TDs with class "pcadets-listing-item-donors" will have the attribute data-pcadets-donorcount, which has a value
              indicating the number of non-anonymous donors for this date.

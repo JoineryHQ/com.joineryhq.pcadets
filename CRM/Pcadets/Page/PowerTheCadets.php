@@ -97,6 +97,7 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
       $percentage = (int) $totalContribution / $totalMealValuePerDay * 100;
       // If $percentage is more than 100, assign it as a 100 and store it on the powerTheCadetsData
       $powerTheCadetsData[$optionValue['id']]['percentage'] = $percentage > 100 ? 100 : $percentage;
+      $powerTheCadetsData[$optionValue['id']]['progress_stage'] = self::calculateProgressStage($percentage);
       // Store sponsors, maximum_donor_to_show and sponsors count
       $powerTheCadetsData[$optionValue['id']]['sponsors'] = $sponsors;
       $powerTheCadetsData[$optionValue['id']]['sponsors_limit'] = $maximumDonorToShow;
@@ -135,4 +136,15 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
     parent::run();
   }
 
+  public static function calculateProgressStage($percentage) {
+    $mediumMinimum = 25;
+    $highMinimum = 75;
+    if ($percentage >= $highMinimum) {
+      return 'high';
+    }
+    elseif ($percentage >= $mediumMinimum) {
+      return 'medium';
+    }
+    return 'low';
+  }
 }
