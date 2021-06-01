@@ -10,6 +10,7 @@
     <path>civicrm/powerthecadets</path>
     <page_callback>CRM_Pcadets_Page_PowerTheCadets</page_callback>
     <title>PowerTheCadets</title>
+    <is_public>true</is_public>
     <access_callback>1</access_callback>
   </item>
 </menu>
