@@ -1,39 +1,13 @@
-# Power the Cadets
+# CiviCRM: Power the Cadets
 
-![Screenshot](/images/screenshot.png)
+Special features for the Power the Cadets program.
 
-(*FIXME: In one or two paragraphs, describe what the extension does and why one would download it. *)
 
 The extension is licensed under [GPL-3.0](LICENSE.txt).
 
-## Requirements
+## Configuration
 
-* PHP v7.0+
-* CiviCRM (*FIXME: Version number*)
-
-## Installation (Web UI)
-
-This extension has not yet been published for installation via the web UI.
-
-## Installation (CLI, Zip)
-
-Sysadmins and developers may download the `.zip` file for this extension and
-install it with the command-line tool [cv](https://github.com/civicrm/cv).
-
-```bash
-cd <extension-dir>
-cv dl com.joineryhq.pcadets@https://github.com/JoineryHQ/com.joineryhq.pcadets/archive/master.zip
-```
-
-## Installation (CLI, Git)
-
-Sysadmins and developers may clone the [Git](https://en.wikipedia.org/wiki/Git) repo for this extension and
-install it with the command-line tool [cv](https://github.com/civicrm/cv).
-
-```bash
-git clone https://github.com/JoineryHQ/com.joineryhq.pcadets.git
-cv en pcadets
-```
+After installation, navigate to Administer > System Settings > Power the Cadets.
 
 ## Support
 ![screenshot](/images/joinery-logo.png)
