@@ -86,7 +86,7 @@
                  in the Honorees OptionGroup
             -->
           {else}
-            <div>We are pleased to tell you that the goal for this date has been achieved.</div>
+            <div>{ts}This date is fully powered.{/ts}</div>
           {/if}
 
           {if $powerTheCadetsItem.soft_credit_description}
