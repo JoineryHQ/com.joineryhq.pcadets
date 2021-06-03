@@ -2,11 +2,11 @@
   <thead id="pcadets-listing-header">
     <tr>
       <!-- Column headers. Each has a unique id, and a common class indicating it is a header for this pcadets listing. -->
-      <th id="pcadets-listing-header-date" class="pcadets-listing-header">Date</th>
-      <th id="pcadets-listing-header-city" class="pcadets-listing-header">City</th>
-      <th id="pcadets-listing-header-mealprogress" class="pcadets-listing-header">Percentage</th>
-      <th id="pcadets-listing-header-donors" class="pcadets-listing-header">Powered By</th>
-      <th id="pcadets-listing-header-links" class="pcadets-listing-header">Power The Cadets</th>
+      <th id="pcadets-listing-header-date" class="pcadets-listing-header">{ts}Date{/ts}</th>
+      <th id="pcadets-listing-header-city" class="pcadets-listing-header">{ts}City{/ts}</th>
+      <th id="pcadets-listing-header-mealprogress" class="pcadets-listing-header">{ts}Percentage{/ts}</th>
+      <th id="pcadets-listing-header-donors" class="pcadets-listing-header">{ts}Powered By{/ts}</th>
+      <th id="pcadets-listing-header-links" class="pcadets-listing-header">{ts}Power The Cadets{/ts}</th>
     </tr>
   </thead>
   <tbody id="pcadets-listing-body">
@@ -66,7 +66,7 @@
           -->
           {if $powerTheCadetsItem.sponsors_count > $powerTheCadetsItem.sponsors_limit}
             <a href="#viewmore" id="pcadets-listing-donors-viewmore-{$powerTheCadetsItemKey}" class="pcadets-listing-donors-viewmore button">
-              <span>View Sponsors</span>
+              <span>{ts}View Sponsors{/ts}</span>
             </a>
           {/if}
         </td>
@@ -80,7 +80,7 @@
           -->
           {if $powerTheCadetsItem.percentage < 100}
             <a href="{$powerTheCadetsItem.contribution_page_url}" id="pcadets-listing-link-donate-{$powerTheCadetsItemKey}" class="pcadets-listing-link-donate button">
-              <span>Power this day</span>
+              <span>{ts}Power this day{/ts}</span>
             </a>
             <!-- Divs with class pcadets-listing-honoreeinfo will ONLY be included if there is an appropriate OptionValue for this date
                  in the Honorees OptionGroup
