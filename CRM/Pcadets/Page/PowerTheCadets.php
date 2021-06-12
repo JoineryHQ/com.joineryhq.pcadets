@@ -7,6 +7,7 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
     // Set the title
     CRM_Utils_System::setTitle(E::ts('Power The Cadets'));
 
+
     // Get the power the cadets settings field values
     $availableDatesId = Civi::settings()->get('pcadets_available_dates');
     $softCreditContactsId = Civi::settings()->get('pcadets_soft_credit_contacts');
@@ -89,12 +90,15 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
         // If remain_anonymous field is not check, store name and amount in the sponsors
         if (!$remainAnonymous) {
         $sponsors[] = (!empty($contribution["custom_{$displayNameCustomFieldId}"]) ? $contribution["custom_{$displayNameCustomFieldId}"] : CRM_Contact_BAO_Contact::displayName($contribution['contact_id']));
+        } else {
+            $sponsors[] = "Anonymous";
         }
       }
       $sponsors = array_unique($sponsors);
 
       // Get the totalContribution percentage base on the total_meal_value_per_day
-      $percentage = (int) $totalContribution / $totalMealValuePerDay * 100;
+      $percentageRaw = (int) $totalContribution / $totalMealValuePerDay * 100;
+      $percentage = ceil($percentageRaw / 10) * 10;
       // If $percentage is more than 100, assign it as a 100 and store it on the powerTheCadetsData
       $powerTheCadetsData[$optionValue['id']]['percentage'] = $percentage > 100 ? 100 : $percentage;
       $powerTheCadetsData[$optionValue['id']]['progress_stage'] = self::calculateProgressStage($percentage);
