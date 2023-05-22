@@ -231,7 +231,7 @@ class CRM_Pcadets_Form_Settings extends CRM_Core_Form {
     $customFields = \Civi\Api4\CustomField::get()
       ->setCheckPermissions(FALSE)
       ->addSelect('id', 'custom_group_id:label', 'label')
-      ->addWhere('custom_group.extends', '=', 'Contribution')
+      ->addWhere('custom_group_id.extends', '=', 'Contribution')
       ->execute();
     foreach ($customFields as $customField) {
       $options[$customField['id']] = "{$customField['custom_group_id:label']} :: {$customField['label']}";
