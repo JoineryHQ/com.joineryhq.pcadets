@@ -17,7 +17,9 @@
 </div>
 <!--END HEADER BLOCK-->
 {if $powerTheCadetsHasCurrentDates}
-  <input type="checkbox" id="pcadets-hide-previous-dates" checked="checked"><label for="pcadets-hide-previous-dates">Hide previous dates</label>
+  <div id="pcadets-controls">
+    <input type="checkbox" id="pcadets-hide-previous-dates" checked="checked" class="crm-form-checkbox"><label for="pcadets-hide-previous-dates">Hide previous dates</label>
+  </div>
 {/if}
 <div class="table-2 table-responsive">
   <table class="table {if $powerTheCadetsHasCurrentDates}pcadets-hide-past-dates{/if}" id="pcadets-listing-table">
