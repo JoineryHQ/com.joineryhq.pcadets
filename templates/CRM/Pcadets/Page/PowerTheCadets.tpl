@@ -7,14 +7,12 @@
   <br>
  <div align="center"> <a href="https://cadets.org/power">← Return</a></div>
 <br>
-  <p>Our performers need 5,000+ calories to stay energized through a full day on the field. With 250 mouths to feed 4X a day, The Cadets’ Food Truck serves up a lot of food! Select a day below to help
-    us provide balanced, nutritious meals every day this summer. Celebrate a performer or staff member by purchasing a meal or dayHonor an alum and invite others to give in their memory.</p>
-  <p>Our performers need over 5,000 calories to stay energized through a full day on the field. With 225 <br>
+  <p>Our performers need over 5,000 calories to stay energized through a full day on the field. With 250 <br>
     mouths to feed 4X a day, The Cadets’ Food Truck serves up a lot of food! Select a day below to help<br>
     us provide balanced, nutritious meals every day this summer.</p>
   <p>Know someone in the corps? Consider purchasing a meal to celebrate them or their section!</p>
 
-  <p><b>Designate a day</b> in honor of a former Cadet, staff member, section, year, <br>
+  <p>You can also <b>designate a day</b> in honor of a former Cadet, staff member, section, year, <br>
     etc. so that you can invite others to give in their memory. Contact <a href="mailto:abroussard@cadets.org">abroussard@cadets.org</a> to claim a date.</p>
 </div>
 <!--END HEADER BLOCK-->
