@@ -16,8 +16,11 @@
     etc. so that you can invite others to give in their memory. Contact <a href="mailto:abroussard@cadets.org">abroussard@cadets.org</a> to claim a date.</p>
 </div>
 <!--END HEADER BLOCK-->
+{if $powerTheCadetsHasCurrentDates}
+  <input type="checkbox" id="pcadets-hide-previous-dates" checked="checked"><label for="pcadets-hide-previous-dates">Hide previous dates</label>
+{/if}
 <div class="table-2 table-responsive">
-  <table class="table" id="pcadets-listing-table">
+  <table class="table {if $powerTheCadetsHasCurrentDates}pcadets-hide-past-dates{/if}" id="pcadets-listing-table">
     <thead id="pcadets-listing-header">
       <tr>
         <!-- Column headers. Each has a unique id, and a common class indicating it is a header for this pcadets listing. -->
@@ -36,7 +39,7 @@
       -->
       <!-- TR for row 1 -->
         {foreach from=$powerTheCadetsList key=powerTheCadetsItemKey item=powerTheCadetsItem}
-        <tr id="pcadets-listing-row-{$powerTheCadetsItemKey}" class="pcadets-listing-row {cycle values="odd-row,even-row"}">
+        <tr id="pcadets-listing-row-{$powerTheCadetsItemKey}" class="pcadets-listing-row {cycle values="odd-row,even-row"} {if $powerTheCadetsItem.date_is_past}pcadets-date-past{/if}">
           <!-- For TD ids and classes, TYPE is an indicator of the type of data it contains (date, city, etc,), and N is the same as in the row id.
                Each TD has a unique id "pcadets-listing-item-TYPE-N".
                Each TD has a class "pcadets-listing-item-TYPE".

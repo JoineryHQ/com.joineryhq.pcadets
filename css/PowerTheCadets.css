@@ -1,0 +1,3 @@
+table#pcadets-listing-table.pcadets-hide-past-dates tr.pcadets-date-past {
+  display: none;
+}

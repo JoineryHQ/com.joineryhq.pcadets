@@ -9,4 +9,13 @@ CRM.$(function($) {
       $(this).prev().slideUp();
     }
   });
+
+  $('input#pcadets-hide-previous-dates').click(function(e) {
+    if ($(this).prop('checked')) {
+      $('table#pcadets-listing-table').addClass('pcadets-hide-past-dates');
+    }
+    else {
+      $('table#pcadets-listing-table').removeClass('pcadets-hide-past-dates');
+    }
+  });
 });

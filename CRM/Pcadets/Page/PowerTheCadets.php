@@ -42,6 +42,7 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
       ->setCheckPermissions(FALSE)
       ->addSelect('id', 'label', 'value', 'description')
       ->addWhere('option_group_id', '=', $availableDatesId)
+      ->addWhere('is_active', '=', true)
       ->addChain('soft_credit_contact', \Civi\Api4\OptionValue::get()
         ->addSelect('value')
         ->addWhere('label', '=', '$value')
@@ -50,11 +51,20 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
       ->execute();
 
     // Foreach optionValues
+    $hasCurrentDates = FALSE;
+    $minDateValue = date('Ymd', strtotime('1 day ago'));
     foreach ($optionValues as $optionValue) {
       // Store date, date_label and city
+      $powerTheCadetsData[$optionValue['id']]['date_raw'] = $optionValue['value'];
       $powerTheCadetsData[$optionValue['id']]['date'] = date("Y-m-d", strtotime($optionValue['value']));
       $powerTheCadetsData[$optionValue['id']]['date_label'] = $optionValue['label'];
       $powerTheCadetsData[$optionValue['id']]['city'] = $optionValue['description'];
+      if ($optionValue['value'] < $minDateValue) {
+        $powerTheCadetsData[$optionValue['id']]['date_is_past'] = TRUE;
+      }
+      else {
+        $hasCurrentDates = TRUE;
+      }
 
       // Get the contributions base on the meal_sponsorship_contribution_page_id..
       // and return the necessary data
@@ -135,7 +145,9 @@ class CRM_Pcadets_Page_PowerTheCadets extends CRM_Core_Page {
 
     // Assign powerTheCadetsData as powerTheCadetsList
     $this->assign('powerTheCadetsList', $powerTheCadetsData);
+    $this->assign('powerTheCadetsHasCurrentDates', $hasCurrentDates);
     CRM_Core_Resources::singleton()->addScriptFile('com.joineryhq.pcadets', 'js/PowerTheCadets.js', 100, 'page-footer');
+    CRM_Core_Resources::singleton()->addStyleFile('com.joineryhq.pcadets', 'css/PowerTheCadets.css', 100, 'page-footer');
 
     parent::run();
   }
